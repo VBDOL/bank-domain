@@ -1,18 +1,20 @@
 public abstract class Conta {
     private static int SEQUENCIAL = 1;
-
+    
     protected int agencia;
     protected int numero;
     protected double saldo;
     protected Cliente cliente;
 
     public Conta(Cliente cliente) {
-        this.agencia = 1; // Simulação de agência padrão
+        this.agencia = 1;
         this.numero = SEQUENCIAL++;
         this.saldo = 0.0;
         this.cliente = cliente;
     }
 
+    public abstract void aplicarTaxas();
+    
     public void depositar(double valor) {
         saldo += valor;
     }
@@ -37,7 +39,4 @@ public abstract class Conta {
     public void imprimirExtrato() {
         System.out.println("Titular: " + cliente.getNome());
         System.out.println("Agência: " + agencia);
-        System.out.println("Número da Conta: " + numero);
-        System.out.println("Saldo Atual: R$ " + saldo);
-    }
-}
+        System.out.println("Número da Conta: " + numero
